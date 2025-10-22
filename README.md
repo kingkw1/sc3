@@ -25,8 +25,9 @@ data/
 - **Total Simulation Runs:** 85 unique simulation executions
 - **Scenario Name:** Operation Tropic Tortoise
 - **Geographic Area:** Southern California region (coordinates approximately -117.6 to -116.3 longitude, 34.2 to 35.1 latitude)
-- **Duration:** 96 hours (345,600 seconds) per simulation
-- **Timestep:** 60 seconds
+- **Simulated Duration:** 96 hours (4 days) of "in-game" time per simulation
+- **Actual Runtime:** ~5.8 minutes per simulation (1000x timescale acceleration)
+- **Timestep:** 60 seconds (simulated time)
 
 ### Directory Structure
 
@@ -34,7 +35,11 @@ Each simulation run is stored in a directory named with a unique UUID. Each dire
 
 #### 1. `config.json` (14,812 lines)
 Complete simulation configuration including:
-- **Scenario metadata:** ID, name, max_scenario_time, timestep, timescale
+- **Scenario metadata:** 
+  - ID, name
+  - max_scenario_time: 345,600 seconds (96 hours simulated)
+  - timestep: 60 seconds
+  - timescale: 1000.0 (simulation runs 1000x faster than real-time)
 - **Area of Interest (AOI):** Geographic boundaries defining the operational area
 - **Factions:** 
   - Blue Force (ID: e54bfe7a-7a43-4ebf-887a-55c5dd4947c6)
@@ -222,8 +227,13 @@ The `readData.m` file provides a MATLAB function to read and structure the data:
 
 ### Time Representation
 - **Simulation time:** Seconds from simulation start (0 to 345,600)
+  - Represents "in-game" time for the 96-hour (4-day) scenario
 - **Wall clock time:** Unix timestamps in milliseconds
-- **Conversion:** Simulation uses 60-second timesteps
+  - Actual time during user sessions at ARL in May 2021
+- **Timescale:** 1000x acceleration
+  - Each simulation runs for ~5.8 minutes of real time
+  - Simulates 96 hours (4 days) of combat operations
+- **Timestep:** 60 seconds (simulated time between updates)
 
 ## Recommended Analysis Tools
 
