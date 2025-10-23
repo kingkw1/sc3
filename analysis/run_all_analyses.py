@@ -15,6 +15,7 @@ Options:
 
 import os
 import sys
+import subprocess
 import argparse
 from datetime import datetime
 
@@ -25,14 +26,18 @@ def run_analysis(script_name, description):
     print("=" * 70)
     
     try:
-        # Import and run the script
-        import importlib.util
-        spec = importlib.util.spec_from_file_location("module", script_name)
-        module = importlib.util.module_from_spec(spec)
-        spec.loader.exec_module(module)
+        # Run the script as a subprocess to ensure __main__ executes
+        import subprocess
+        result = subprocess.run([sys.executable, script_name], 
+                              capture_output=False, 
+                              text=True,
+                              check=True)
         
         print(f"✓ Completed: {description}")
         return True
+    except subprocess.CalledProcessError as e:
+        print(f"✗ Error in {description}: Script returned non-zero exit code")
+        return False
     except Exception as e:
         print(f"✗ Error in {description}: {e}")
         return False
