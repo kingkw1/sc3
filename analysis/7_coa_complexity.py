@@ -295,8 +295,8 @@ def plot_coa_efficiency(sim_results, coa_data):
     """Plot COA efficiency - complexity vs outcomes."""
     print(f"Creating COA efficiency analysis...")
     
-    fig = plt.figure(figsize=(14, 8))
-    gs = fig.add_gridspec(2, 3, hspace=0.3, wspace=0.3)
+    fig = plt.figure(figsize=(16, 10))
+    gs = fig.add_gridspec(2, 3, hspace=0.35, wspace=0.4)
     
     # Extract metrics
     total_tasks = np.array([r['total_tasks'] for r in sim_results])
@@ -393,7 +393,9 @@ def plot_coa_efficiency(sim_results, coa_data):
     ax5.grid(True, alpha=0.3, axis='y')
     
     plt.suptitle('COA Efficiency Analysis - Planning vs Performance', 
-                 fontsize=14, fontweight='bold')
+                 fontsize=14, fontweight='bold', y=0.995)
+    
+    plt.tight_layout(rect=[0, 0, 1, 0.99])
     
     output_path = os.path.join(OUTPUT_DIR, 'coa_efficiency.png')
     plt.savefig(output_path, dpi=300, bbox_inches='tight')

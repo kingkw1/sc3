@@ -150,8 +150,8 @@ def plot_kill_ratio_analysis(results):
     """Create kill ratio focused plots showing Blue Force effectiveness."""
     print(f"Creating kill ratio analysis for {len(results)} simulations...")
     
-    fig = plt.figure(figsize=(16, 10))
-    gs = fig.add_gridspec(3, 2, hspace=0.3, wspace=0.3)
+    fig = plt.figure(figsize=(18, 12))
+    gs = fig.add_gridspec(3, 2, hspace=0.4, wspace=0.35)
     
     # Extract data - filter out invalid entries consistently
     valid_results = [r for r in results if r['kill_ratio'] != float('inf')]
@@ -262,6 +262,8 @@ def plot_kill_ratio_analysis(results):
     
     plt.suptitle('Blue Force Performance Analysis - Kill Ratios', 
                  fontsize=16, fontweight='bold', y=0.995)
+    
+    plt.tight_layout(rect=[0, 0, 1, 0.99])
     
     output_path = os.path.join(OUTPUT_DIR, 'kill_ratio_analysis.png')
     plt.savefig(output_path, dpi=300, bbox_inches='tight')

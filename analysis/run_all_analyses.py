@@ -69,6 +69,8 @@ def main():
         ("3_combat_intensity_heatmap.py", "Combat Intensity Heatmap Analysis"),
         ("4_unit_survival_analysis.py", "Unit Survival Analysis"),
         ("5_coa_comparison.py", "COA Comparison Analysis"),
+        ("6_blue_force_performance.py", "Blue Force Performance Analysis"),
+        ("7_coa_complexity.py", "COA Complexity Analysis"),
     ]
     
     results = []
