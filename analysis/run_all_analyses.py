@@ -72,6 +72,7 @@ def main():
         ("6_blue_force_performance.py", "Blue Force Performance Analysis"),
         ("7_coa_complexity.py", "COA Complexity Analysis"),
         ("8_time_to_completion.py", "Time to Completion Analysis"),
+        ("9_completion_time_vs_performance.py", "Completion Time vs Performance Analysis")
     ]
     
     results = []
